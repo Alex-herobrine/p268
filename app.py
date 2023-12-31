@@ -18,6 +18,10 @@ def upload_image():
     width = int(request.form['width'])
     height = int(request.form['height'])
 
+    image_file = request.files['file']
+
+    filename = secure_filename(image_file.filename)
+
     image_file.save(os.path.join('static/', filename))
 
     image = Image.open(image_file)
